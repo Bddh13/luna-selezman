@@ -5,7 +5,7 @@ export default function Hero() {
       {/* Main content */}
       <div className="text-center px-4 select-none">
         {/* Eyebrow label */}
-        <p className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#c8f542] mb-10">
+        <p className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#d4a843] mb-10">
           Visual Artist
         </p>
 
@@ -35,7 +35,7 @@ export default function Hero() {
           Scroll
         </span>
         <div className="relative w-px h-14 bg-[#1c1c1c] overflow-hidden">
-          <span className="scroll-line absolute top-0 left-0 right-0 h-4 bg-[#c8f542]" />
+          <span className="scroll-line absolute top-0 left-0 right-0 h-4 bg-[#d4a843]" />
         </div>
       </div>
 

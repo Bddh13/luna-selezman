@@ -36,7 +36,7 @@ export default function Contact() {
               <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#e8e4dc]/35">
                 {link.label}
               </span>
-              <span className="font-sans text-sm text-[#e8e4dc] group-hover:text-[#c8f542] transition-colors duration-200">
+              <span className="font-sans text-sm text-[#e8e4dc] group-hover:text-[#d4a843] transition-colors duration-200">
                 {link.display}
               </span>
             </a>
@@ -47,14 +47,14 @@ export default function Contact() {
         <div>
           <a
             href="mailto:lunaselezman@gmail.com?subject=Commission%20Inquiry"
-            className="group inline-flex items-center gap-5 border border-[#e8e4dc]/25 px-8 py-4 hover:border-[#c8f542] transition-colors duration-200"
+            className="group inline-flex items-center gap-5 border border-[#e8e4dc]/25 px-8 py-4 hover:border-[#d4a843] transition-colors duration-200"
           >
-            <span className="font-sans text-[10px] tracking-[0.4em] uppercase text-[#e8e4dc] group-hover:text-[#c8f542] transition-colors duration-200">
+            <span className="font-sans text-[10px] tracking-[0.4em] uppercase text-[#e8e4dc] group-hover:text-[#d4a843] transition-colors duration-200">
               Commission a Work
             </span>
             {/* Arrow */}
             <span
-              className="text-[#e8e4dc]/50 group-hover:text-[#c8f542] transition-colors duration-200"
+              className="text-[#e8e4dc]/50 group-hover:text-[#d4a843] transition-colors duration-200"
               aria-hidden
             >
               →

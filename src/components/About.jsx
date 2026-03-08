@@ -53,7 +53,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
           <div className="about-fade">
-            <h3 className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#c8f542] mb-8">
+            <h3 className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#d4a843] mb-8">
               Biography
             </h3>
             <div className="space-y-5">
@@ -73,7 +73,7 @@ export default function About() {
           </div>
 
           <div className="about-fade">
-            <h3 className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#c8f542] mb-8">
+            <h3 className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#d4a843] mb-8">
               Artist Statement
             </h3>
             <div className="space-y-5">

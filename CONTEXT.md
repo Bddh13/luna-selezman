@@ -16,7 +16,7 @@ References: albertomielgo.com, ghostline.live, orkhan.art
 Rules:
 - Background: #080808
 - Text: #e8e4dc
-- Accent: #c8f542 (electric lime)
+- Accent: #d4a843 (gold)
 - Font headings: Space Grotesk, uppercase
 - Font name: Cormorant Garamond, large
 - NO rounded corners (border-radius: 0)

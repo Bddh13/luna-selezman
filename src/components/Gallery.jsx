@@ -118,7 +118,7 @@ export default function Gallery() {
 
               <div className="gallery-overlay">
                 <div>
-                  <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#c8f542] mb-1">
+                  <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#d4a843] mb-1">
                     {work.year}{work.size ? ` — ${work.size}` : ''}
                   </p>
                   <p className="font-display text-xl font-light text-[#e8e4dc]">
