@@ -10,7 +10,7 @@ export default function About() {
           if (entry.isIntersecting) entry.target.classList.add('visible')
         })
       },
-      { threshold: 0.15 },
+      { threshold: 0.05 },
     )
 
     const items = sectionRef.current?.querySelectorAll('.about-fade')
@@ -31,16 +31,16 @@ export default function About() {
           About
         </h2>
 
-        <div className="about-fade mb-16 md:mb-20 overflow-hidden relative">
+        <div className="about-fade mb-10 md:mb-20 relative">
           <img
             src="/art/ABOUT.png"
             alt="Lúna Selezman"
-            className="w-full max-h-[75vh] object-cover"
+            className="w-full max-h-[50vh] md:max-h-[75vh] object-cover"
           />
           <span
             className="absolute top-1/2 left-1/2 font-display font-light uppercase text-white whitespace-nowrap select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
             style={{
-              fontSize: 'clamp(2.8rem, 9.5vw, 9rem)',
+              fontSize: 'clamp(1.4rem, 9.5vw, 9rem)',
               letterSpacing: '-0.01em',
               transform: 'translate(-50%, -50%)',
             }}

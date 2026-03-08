@@ -1,8 +1,9 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 
 export default function Lightbox({ images, currentIndex, onClose, onNavigate }) {
   const image = images[currentIndex]
   const total = images.length
+  const touchStart = useRef(null)
 
   const goPrev = useCallback(() => {
     onNavigate((currentIndex - 1 + total) % total)
@@ -26,10 +27,28 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }) 
     }
   }, [onClose, goPrev, goNext])
 
+  const handleTouchStart = (e) => {
+    touchStart.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e) => {
+    if (touchStart.current === null) return
+    const delta = e.changedTouches[0].clientX - touchStart.current
+    const SWIPE_THRESHOLD = 50
+    if (delta < -SWIPE_THRESHOLD) goNext()
+    else if (delta > SWIPE_THRESHOLD) goPrev()
+    touchStart.current = null
+  }
+
   if (!image) return null
 
   return (
-    <div className="lightbox-backdrop" onClick={onClose}>
+    <div
+      className="lightbox-backdrop"
+      onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
 
         {/* Close */}
@@ -37,8 +56,8 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }) 
           ✕
         </button>
 
-        {/* Prev */}
-        <button className="lightbox-arrow lightbox-arrow--left" onClick={goPrev} aria-label="Previous">
+        {/* Prev — desktop only */}
+        <button className="lightbox-arrow lightbox-arrow--left hidden sm:flex" onClick={goPrev} aria-label="Previous">
           ←
         </button>
 
@@ -47,10 +66,12 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }) 
           src={image.src}
           alt={image.title}
           className="lightbox-image"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         />
 
-        {/* Next */}
-        <button className="lightbox-arrow lightbox-arrow--right" onClick={goNext} aria-label="Next">
+        {/* Next — desktop only */}
+        <button className="lightbox-arrow lightbox-arrow--right hidden sm:flex" onClick={goNext} aria-label="Next">
           →
         </button>
 
