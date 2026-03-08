@@ -38,10 +38,11 @@ export default function About() {
             className="w-full max-h-[50vh] md:max-h-[75vh] object-cover"
           />
           <span
-            className="absolute top-1/2 left-1/2 font-display font-light uppercase text-white whitespace-nowrap select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
+            className="absolute left-1/2 font-display font-light uppercase text-white whitespace-nowrap select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
             style={{
-              fontSize: 'clamp(1.4rem, 9.5vw, 9rem)',
+              fontSize: 'clamp(1.2rem, 7vw, 6rem)',
               letterSpacing: '-0.01em',
+              top: '66.6%',
               transform: 'translate(-50%, -50%)',
             }}
           >

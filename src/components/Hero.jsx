@@ -2,26 +2,6 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col items-center justify-center bg-[#080808] overflow-hidden">
 
-      {/* Top bar */}
-      <div className="absolute top-0 left-0 right-0 border-b border-[#222] z-10">
-        <div className="flex justify-between items-center px-6 md:px-12 py-5">
-          <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#e8e4dc]/50">
-            Portfolio
-          </span>
-          <nav className="flex items-center gap-8">
-            {['Gallery', 'About', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#e8e4dc]/50 hover:text-[#c8f542] transition-colors duration-200"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </div>
-
       {/* Main content */}
       <div className="text-center px-4 select-none">
         {/* Eyebrow label */}
