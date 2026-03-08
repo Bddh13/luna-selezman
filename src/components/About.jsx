@@ -39,14 +39,12 @@ export default function About() {
             style={{ transform: 'scale(1.01)' }}
           />
           <span
-            className="absolute left-1/2 font-display font-light uppercase text-white select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
+            className="absolute left-1/2 font-display font-light uppercase text-white whitespace-nowrap select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
             style={{
-              fontSize: 'clamp(1.4rem, 8vw, 7rem)',
+              fontSize: 'clamp(1rem, 6.5vw, 7rem)',
               letterSpacing: '0.15em',
               top: '75%',
               transform: 'translate(-50%, -50%)',
-              maxWidth: '90%',
-              textAlign: 'center',
             }}
           >
             LÚNA SELEZMAN
