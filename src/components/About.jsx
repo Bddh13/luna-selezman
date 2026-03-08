@@ -31,19 +31,22 @@ export default function About() {
           About
         </h2>
 
-        <div className="about-fade mb-10 md:mb-20 relative">
+        <div className="about-fade mb-10 md:mb-20 relative overflow-hidden">
           <img
             src="/art/ABOUT.png"
             alt="Lúna Selezman"
             className="w-full max-h-[50vh] md:max-h-[75vh] object-cover"
+            style={{ transform: 'scale(1.01)' }}
           />
           <span
-            className="absolute left-1/2 font-display font-light uppercase text-white whitespace-nowrap select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
+            className="absolute left-1/2 font-display font-light uppercase text-white select-none pointer-events-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]"
             style={{
-              fontSize: 'clamp(1.2rem, 7vw, 6rem)',
-              letterSpacing: '-0.01em',
-              top: '66.6%',
+              fontSize: 'clamp(1.4rem, 8vw, 7rem)',
+              letterSpacing: '0.15em',
+              top: '75%',
               transform: 'translate(-50%, -50%)',
+              maxWidth: '90%',
+              textAlign: 'center',
             }}
           >
             LÚNA SELEZMAN
