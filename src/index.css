@@ -1,0 +1,343 @@
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ── Tailwind v4 (processed by @tailwindcss/vite, no config file needed) ──── */
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────────────────────────────── */
+@theme {
+  --color-bg:      #080808;
+  --color-text:    #e8e4dc;
+  --color-accent:  #c8f542;
+  --color-border:  #222222;
+
+  --font-sans:     'Space Grotesk', system-ui, sans-serif;
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+}
+
+/* ── Base resets ────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: #080808;
+    color: #e8e4dc;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Nuke Vite default #root constraints */
+  #root {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  GLITCH ANIMATION                                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+/* Both pseudo-elements clone the text via data-text attribute */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Layer 1 — accent color slice */
+.glitch::before {
+  color: #c8f542;
+  opacity: 0;
+  animation: glitch-layer-1 10s 0.35s steps(1) infinite;
+}
+
+/* Layer 2 — white offset slice */
+.glitch::after {
+  color: #ffffff;
+  opacity: 0;
+  left: 4px;
+  animation: glitch-layer-2 10s 0.35s steps(1) infinite;
+}
+
+@keyframes glitch-layer-1 {
+  0%    { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0,  0); }
+  1%    { opacity: 1; clip-path: inset( 5% 0  80% 0); transform: translate(-6px, 0); }
+  2%    {             clip-path: inset(55% 0  14% 0); transform: translate( 5px, 0); }
+  3%    {             clip-path: inset(24% 0  60% 0); transform: translate(-4px, 1px); }
+  4%    {             clip-path: inset(72% 0   8% 0); transform: translate( 6px, 0); }
+  5%    {             clip-path: inset(40% 0  44% 0); transform: translate(-5px, -1px); }
+  6%    {             clip-path: inset(11% 0  76% 0); transform: translate( 4px, 0); }
+  7%    {             clip-path: inset(60% 0  28% 0); transform: translate(-3px, 2px); }
+  8%    {             clip-path: inset(88% 0   4% 0); transform: translate( 5px, 0); }
+  9%    {             clip-path: inset(35% 0  52% 0); transform: translate(-6px, -1px); }
+  10%   {             clip-path: inset(18% 0  68% 0); transform: translate( 3px, 1px); }
+  11%   {             clip-path: inset(78% 0  12% 0); transform: translate(-4px, 0); }
+  12%   {             clip-path: inset(48% 0  40% 0); transform: translate( 5px, 0); }
+  13%   {             clip-path: inset( 7% 0  84% 0); transform: translate(-3px, -2px); }
+  14%   {             clip-path: inset(64% 0  22% 0); transform: translate( 4px, 1px); }
+  15%   { opacity: 1; clip-path: inset(30% 0  58% 0); transform: translate(-5px, 0); }
+  17%   { opacity: 0; clip-path: inset(0   0 100% 0); transform: translate( 0,  0); }
+  100%  { opacity: 0; }
+}
+
+@keyframes glitch-layer-2 {
+  0%    { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0,  0); }
+  1%    { opacity: 1; clip-path: inset(68% 0  12% 0); transform: translate( 5px, -1px); }
+  2%    {             clip-path: inset(14% 0  71% 0); transform: translate(-6px, 0); }
+  3%    {             clip-path: inset(44% 0  42% 0); transform: translate( 4px, 2px); }
+  4%    {             clip-path: inset( 3% 0  88% 0); transform: translate(-5px, 0); }
+  5%    {             clip-path: inset(80% 0   8% 0); transform: translate( 6px, -1px); }
+  6%    {             clip-path: inset(32% 0  55% 0); transform: translate(-3px, 1px); }
+  7%    {             clip-path: inset(58% 0  30% 0); transform: translate( 5px, 0); }
+  8%    {             clip-path: inset(22% 0  65% 0); transform: translate(-4px, -2px); }
+  9%    {             clip-path: inset(92% 0   3% 0); transform: translate( 3px, 1px); }
+  10%   {             clip-path: inset(50% 0  38% 0); transform: translate(-5px, 0); }
+  11%   {             clip-path: inset( 9% 0  76% 0); transform: translate( 6px, -1px); }
+  12%   {             clip-path: inset(75% 0  15% 0); transform: translate(-3px, 2px); }
+  13%   {             clip-path: inset(38% 0  48% 0); transform: translate( 4px, 0); }
+  14%   {             clip-path: inset(85% 0   6% 0); transform: translate(-5px, 1px); }
+  15%   { opacity: 1; clip-path: inset(20% 0  68% 0); transform: translate( 4px, 0); }
+  17%   { opacity: 0; clip-path: inset(0   0 100% 0); transform: translate( 0,  0); }
+  100%  { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  HERO SCROLL INDICATOR                                                     */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes scroll-drop {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(380%); opacity: 0; }
+}
+
+.scroll-line {
+  animation: scroll-drop 1.9s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  GALLERY GRID                                                              */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.masonry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+}
+
+@media (min-width: 640px) {
+  .masonry { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .masonry { grid-template-columns: repeat(3, 1fr); }
+}
+
+.masonry-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.masonry-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  GALLERY — scroll fade-in stagger                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.gallery-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  GALLERY — hover overlay                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.74);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem 1rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.masonry-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  ABOUT — scroll fade-in                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.about-fade {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.about-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  LIGHTBOX                                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(4, 4, 4, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lb-fade-in 0.25s ease;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 1rem 5rem;
+}
+
+@media (min-width: 640px) {
+  .lightbox-content { padding: 3rem 4rem 5rem; }
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 14px;
+  color: #e8e4dc;
+  opacity: 0.4;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 20px;
+  color: #e8e4dc;
+  opacity: 0.25;
+  background: none;
+  border: 1px solid rgba(34, 34, 34, 0.6);
+  cursor: pointer;
+  z-index: 10;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox-arrow:hover {
+  opacity: 1;
+  border-color: #c8f542;
+  color: #c8f542;
+}
+
+.lightbox-arrow--left {
+  left: 0.75rem;
+}
+
+.lightbox-arrow--right {
+  right: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .lightbox-arrow--left  { left: 1.5rem; }
+  .lightbox-arrow--right { right: 1.5rem; }
+}
+
+.lightbox-info {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+@keyframes lb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.masonry-item { cursor: pointer; }
