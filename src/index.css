@@ -369,53 +369,58 @@
 .masonry-item { cursor: pointer; }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/*  THUMBNAIL STRIP                                                           */
+/*  CAROUSEL                                                                  */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
-.thumb-strip {
+.carousel-strip {
   display: flex;
-  gap: 1px;
+  gap: 6px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  padding: 1.5rem 0;
+  align-items: center;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-.thumb-strip::-webkit-scrollbar {
+.carousel-strip::-webkit-scrollbar {
   display: none;
 }
 
-.thumb-strip-item {
+.carousel-card {
   flex-shrink: 0;
-  width: 70%;
-  scroll-snap-align: start;
+  width: 40%;
+  scroll-snap-align: center;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 @media (min-width: 640px) {
-  .thumb-strip-item { width: 33.333%; }
+  .carousel-card { width: 22%; }
 }
 
 @media (min-width: 1024px) {
-  .thumb-strip-item { width: 25%; }
+  .carousel-card { width: 18%; }
 }
 
-.thumb-strip-item img {
+.carousel-card--active {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 2;
+}
+
+.carousel-card img {
   display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  aspect-ratio: 1;
-  transition: transform 0.55s ease;
 }
 
-.thumb-strip-item:hover img {
-  transform: scale(1.04);
-}
-
-.thumb-arrow {
+.carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -423,30 +428,32 @@
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 16px;
   color: #e8e4dc;
-  opacity: 0;
-  background: rgba(8, 8, 8, 0.7);
+  opacity: 0.35;
+  background: rgba(8, 8, 8, 0.6);
   border: 1px solid #222;
   cursor: pointer;
   width: 2.5rem;
   height: 2.5rem;
+  display: flex;
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 
-.group\/strip:hover .thumb-arrow {
+.carousel-arrow:hover {
   opacity: 1;
-}
-
-.thumb-arrow:hover {
   border-color: #d4a843;
   color: #d4a843;
 }
 
-.thumb-arrow--left {
-  left: 0.5rem;
+.carousel-arrow--left {
+  left: 0.25rem;
 }
 
-.thumb-arrow--right {
-  right: 0.5rem;
+.carousel-arrow--right {
+  right: 0.25rem;
+}
+
+@media (max-width: 639px) {
+  .carousel-arrow { display: none; }
 }

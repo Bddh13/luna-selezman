@@ -68,15 +68,32 @@ function flatIndexOf(colIdx, workIdx) {
   return idx + workIdx
 }
 
-function ThumbStrip({ items, onSelect }) {
+function Carousel({ collection, colIdx, activeIdx, onActiveChange, onOpen }) {
   const stripRef = useRef(null)
   const touchStart = useRef(null)
+  const works = collection.works
 
-  const scroll = (dir) => {
+  const scrollToIdx = (idx) => {
     const el = stripRef.current
     if (!el) return
-    const amount = el.clientWidth * 0.6
-    el.scrollBy({ left: dir * amount, behavior: 'smooth' })
+    const items = el.querySelectorAll('.carousel-card')
+    if (items[idx]) {
+      const card = items[idx]
+      const scrollLeft = card.offsetLeft - el.clientWidth / 2 + card.offsetWidth / 2
+      el.scrollTo({ left: scrollLeft, behavior: 'smooth' })
+    }
+  }
+
+  const goPrev = () => {
+    const next = (activeIdx - 1 + works.length) % works.length
+    onActiveChange(next)
+    scrollToIdx(next)
+  }
+
+  const goNext = () => {
+    const next = (activeIdx + 1) % works.length
+    onActiveChange(next)
+    scrollToIdx(next)
   }
 
   const handleTouchStart = (e) => {
@@ -86,15 +103,16 @@ function ThumbStrip({ items, onSelect }) {
   const handleTouchEnd = (e) => {
     if (touchStart.current === null) return
     const delta = e.changedTouches[0].clientX - touchStart.current
-    if (Math.abs(delta) > 50) scroll(delta < 0 ? 1 : -1)
+    if (delta < -50) goNext()
+    else if (delta > 50) goPrev()
     touchStart.current = null
   }
 
   return (
-    <div className="relative group/strip">
+    <div className="relative group/carousel">
       <button
-        className="thumb-arrow thumb-arrow--left hidden sm:flex"
-        onClick={() => scroll(-1)}
+        className="carousel-arrow carousel-arrow--left"
+        onClick={goPrev}
         aria-label="Previous"
       >
         ←
@@ -102,38 +120,32 @@ function ThumbStrip({ items, onSelect }) {
 
       <div
         ref={stripRef}
-        className="thumb-strip"
+        className="carousel-strip"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {items.map((item) => (
+        {works.map((work, i) => (
           <div
-            key={item.file}
-            className="thumb-strip-item"
-            onClick={() => onSelect(item.flatIdx)}
+            key={work.file}
+            className={`carousel-card ${i === activeIdx ? 'carousel-card--active' : ''}`}
+            onClick={() => {
+              onActiveChange(i)
+              scrollToIdx(i)
+            }}
+            onDoubleClick={() => onOpen(flatIndexOf(colIdx, i))}
           >
             <img
-              src={item.src}
-              alt={item.title}
+              src={`/art/${collection.id}/${work.file}`}
+              alt={work.title}
               loading="lazy"
             />
-            <div className="gallery-overlay">
-              <div>
-                <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#d4a843] mb-1">
-                  {item.year}{item.size ? ` — ${item.size}` : ''}
-                </p>
-                <p className="font-display text-base font-light text-[#e8e4dc]">
-                  {item.title}
-                </p>
-              </div>
-            </div>
           </div>
         ))}
       </div>
 
       <button
-        className="thumb-arrow thumb-arrow--right hidden sm:flex"
-        onClick={() => scroll(1)}
+        className="carousel-arrow carousel-arrow--right"
+        onClick={goNext}
         aria-label="Next"
       >
         →
@@ -145,9 +157,23 @@ function ThumbStrip({ items, onSelect }) {
 export default function Gallery() {
   const sectionRef = useRef(null)
   const [lightboxIndex, setLightboxIndex] = useState(-1)
+  const [activeIndices, setActiveIndices] = useState(() =>
+    COLLECTIONS.map((c) => {
+      const idx = c.works.findIndex((w) => w.file === c.heroFile)
+      return idx >= 0 ? idx : 0
+    }),
+  )
 
   const openLightbox = useCallback((flatIdx) => setLightboxIndex(flatIdx), [])
   const closeLightbox = useCallback(() => setLightboxIndex(-1), [])
+
+  const setActiveForCol = useCallback((colIdx, workIdx) => {
+    setActiveIndices((prev) => {
+      const next = [...prev]
+      next[colIdx] = workIdx
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -183,16 +209,11 @@ export default function Gallery() {
       </div>
 
       {COLLECTIONS.map((collection, colIdx) => {
-        const heroIdx = collection.works.findIndex((w) => w.file === collection.heroFile)
-        const hero = collection.works[heroIdx]
-        const heroFlatIdx = flatIndexOf(colIdx, heroIdx)
-
-        const thumbs = collection.works
-          .map((w, i) => ({ ...w, src: `/art/${collection.id}/${w.file}`, flatIdx: flatIndexOf(colIdx, i) }))
-          .filter((_, i) => i !== heroIdx)
+        const activeWork = collection.works[activeIndices[colIdx]]
+        const heroFlatIdx = flatIndexOf(colIdx, activeIndices[colIdx])
 
         return (
-          <div key={collection.id} className="mb-20 last:mb-0">
+          <div key={collection.id} className="mb-24 last:mb-0">
             {/* Header */}
             <div className="px-6 md:px-12 mb-6 flex items-baseline justify-between">
               <h3 className="font-sans text-[10px] tracking-[0.45em] uppercase text-[#e8e4dc]/45">
@@ -213,35 +234,39 @@ export default function Gallery() {
 
             {/* Hero image */}
             <div
-              className="gallery-item px-6 md:px-12 mb-1 cursor-pointer"
+              className="gallery-item px-6 md:px-12 mb-6 cursor-pointer"
               onClick={() => openLightbox(heroFlatIdx)}
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={`/art/${collection.id}/${hero.file}`}
-                  alt={hero.title}
+                  src={`/art/${collection.id}/${activeWork.file}`}
+                  alt={activeWork.title}
                   className="w-full max-h-[70vh] object-cover transition-transform duration-500 hover:scale-[1.02]"
                   loading="lazy"
                 />
                 <div className="gallery-overlay">
                   <div>
                     <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#d4a843] mb-1">
-                      {hero.year}{hero.size ? ` — ${hero.size}` : ''}
+                      {activeWork.year}{activeWork.size ? ` — ${activeWork.size}` : ''}
                     </p>
                     <p className="font-display text-xl font-light text-[#e8e4dc]">
-                      {hero.title}
+                      {activeWork.title}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Thumbnail strip */}
-            {thumbs.length > 0 && (
-              <div className="gallery-item px-6 md:px-12">
-                <ThumbStrip items={thumbs} onSelect={openLightbox} />
-              </div>
-            )}
+            {/* Carousel */}
+            <div className="gallery-item px-6 md:px-12">
+              <Carousel
+                collection={collection}
+                colIdx={colIdx}
+                activeIdx={activeIndices[colIdx]}
+                onActiveChange={(i) => setActiveForCol(colIdx, i)}
+                onOpen={openLightbox}
+              />
+            </div>
           </div>
         )
       })}
