@@ -59,16 +59,15 @@ export default function About() {
             </h3>
             <div className="space-y-5">
               <p className="font-sans font-light text-sm md:text-base leading-relaxed text-[#e8e4dc]/75">
-                Lúna Selezman (born 2000, Langepas, Russia) is an academic painter and
-                performer whose artistic journey began under the mentorship of Repin Academy
-                masters. Her training in classical techniques laid a solid foundation for her
-                distinctive synthesis of painting and performance.
+                Lúna Selezman (born 2000, Langepas, Russia) is an academic painter working
+                in the tradition of the Russian school. Trained under masters connected to
+                the Repin Academy, she works primarily with oil painting, exploring
+                mythological imagery, archetypes, and symbolic transformation.
               </p>
               <p className="font-sans font-light text-sm md:text-base leading-relaxed text-[#e8e4dc]/75">
-                Lúna's work bridges traditional and contemporary practices, often incorporating
-                movement and dance into her creative process. This interdisciplinary approach
-                has led her to perform in theaters, galleries, and even a planetarium, where she
-                explores the dynamic relationship between visual art and physical expression.
+                Her works combine classical technique with contemporary visual language,
+                often depicting hybrid figures, animals, and mythic forms that reflect
+                inner psychological states.
               </p>
             </div>
           </div>
@@ -79,17 +78,13 @@ export default function About() {
             </h3>
             <div className="space-y-5">
               <p className="font-sans font-light text-sm md:text-base leading-relaxed text-[#e8e4dc]/75">
-                My art is a reflection of the profound connection between the body and emotion,
-                using painting and movement as complementary languages. I draw inspiration from
-                personal memories, archetypes, and the energy of natural elements, aiming to
-                transform individual experiences into universally resonant images.
+                My work explores transformation through mythological and archetypal imagery.
+                Using the language of academic painting, I create symbolic figures and hybrid
+                beings that reflect inner psychological and emotional states.
               </p>
               <p className="font-sans font-light text-sm md:text-base leading-relaxed text-[#e8e4dc]/75">
-                Each piece invites the viewer into a shared space of exploration and
-                introspection, encouraging deeper self-awareness and a sense of unity with the
-                surrounding world. Through my work, I strive to dissolve boundaries between
-                disciplines, crafting a holistic sensory experience that engages sight, movement,
-                and emotion.
+                I am interested in the moment where the human, animal, and mythic intersect,
+                revealing deeper layers of identity and perception.
               </p>
             </div>
           </div>
