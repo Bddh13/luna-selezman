@@ -51,19 +51,30 @@ const COLLECTIONS = [
   },
 ]
 
-const totalWorks = COLLECTIONS.reduce((sum, c) => sum + c.works.length, 0)
+const FEATURED = {
+  file: 'thought_2026_80x120.png',
+  title: 'Thought',
+  year: 2026,
+  size: '80 × 120 cm',
+  note: 'The first work from the Dragon Portraits collection',
+}
 
-const allImages = COLLECTIONS.flatMap((c) =>
-  c.works.map((w) => ({
-    src: `/art/${c.id}/${w.file}`,
-    title: w.title,
-    year: w.year,
-    size: w.size,
-  })),
-)
+const totalWorks = COLLECTIONS.reduce((sum, c) => sum + c.works.length, 0) + 1
+
+const allImages = [
+  { src: `/art/${FEATURED.file}`, title: FEATURED.title, year: FEATURED.year, size: FEATURED.size },
+  ...COLLECTIONS.flatMap((c) =>
+    c.works.map((w) => ({
+      src: `/art/${c.id}/${w.file}`,
+      title: w.title,
+      year: w.year,
+      size: w.size,
+    })),
+  ),
+]
 
 function flatIndexOf(colIdx, workIdx) {
-  let idx = 0
+  let idx = 1
   for (let i = 0; i < colIdx; i++) idx += COLLECTIONS[i].works.length
   return idx + workIdx
 }
@@ -206,6 +217,37 @@ export default function Gallery() {
         <span className="font-sans text-[10px] tracking-[0.2em] text-[#e8e4dc]/40">
           ({totalWorks})
         </span>
+      </div>
+
+      {/* Featured work */}
+      <div className="mb-24">
+        <div className="px-6 md:px-12 mb-2">
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#d4a843]">
+            {FEATURED.note}
+          </p>
+        </div>
+        <div
+          className="gallery-item px-6 md:px-12 mb-4 cursor-pointer"
+          onClick={() => openLightbox(0)}
+        >
+          <div className="relative overflow-hidden">
+            <img
+              src={`/art/${FEATURED.file}`}
+              alt={FEATURED.title}
+              className="w-full max-h-[75vh] object-cover transition-transform duration-500 hover:scale-[1.02]"
+            />
+            <div className="gallery-overlay">
+              <div>
+                <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#d4a843] mb-1">
+                  {FEATURED.year} — {FEATURED.size}
+                </p>
+                <p className="font-display text-xl font-light text-[#e8e4dc]">
+                  {FEATURED.title}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {COLLECTIONS.map((collection, colIdx) => {
