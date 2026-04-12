@@ -293,57 +293,6 @@
   user-select: none;
 }
 
-.lightbox-zoom-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.lightbox-info--hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.lightbox-zoom-controls {
-  position: absolute;
-  top: 1rem;
-  left: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  z-index: 10;
-}
-
-.lightbox-zoom-controls button {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 18px;
-  color: #e8e4dc;
-  opacity: 0.5;
-  background: rgba(8, 8, 8, 0.6);
-  border: 1px solid #222;
-  cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease, border-color 0.2s ease;
-}
-
-.lightbox-zoom-controls button:hover:not(:disabled) {
-  opacity: 1;
-  border-color: #d4a843;
-  color: #d4a843;
-}
-
-.lightbox-zoom-controls button:disabled {
-  opacity: 0.15;
-  cursor: default;
-}
-
 .lightbox-close {
   position: absolute;
   top: 1rem;
