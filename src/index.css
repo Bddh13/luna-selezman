@@ -291,6 +291,40 @@
   max-height: 100%;
   object-fit: contain;
   user-select: none;
+  cursor: zoom-in;
+}
+
+.lightbox-zoom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-zoom-container--active {
+  overflow: auto;
+  cursor: zoom-out;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.lightbox-zoom-container--active::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox-image-zoomed {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  user-select: none;
+  cursor: zoom-out;
+}
+
+.lightbox-info--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .lightbox-close {
