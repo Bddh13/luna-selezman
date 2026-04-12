@@ -56,7 +56,7 @@ const FEATURED = {
   title: 'Thought',
   year: 2026,
   size: '80 × 120 cm',
-  note: 'The first work from the Dragon Portraits collection',
+  note: 'THE FIRST DROP FROM THE DRAGON COLLECTION',
 }
 
 const totalWorks = COLLECTIONS.reduce((sum, c) => sum + c.works.length, 0) + 1
@@ -222,7 +222,7 @@ export default function Gallery() {
       {/* Featured work */}
       <div className="mb-24">
         <div className="px-6 md:px-12 mb-2">
-          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#d4a843]">
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#e8e4dc]/45">
             {FEATURED.note}
           </p>
         </div>
