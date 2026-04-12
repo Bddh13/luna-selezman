@@ -309,9 +309,8 @@
 
 .lightbox-zoom-controls {
   position: absolute;
-  bottom: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 1rem;
+  left: 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
