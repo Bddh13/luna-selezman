@@ -29,20 +29,20 @@ const COLLECTIONS = [
   },
   {
     id: 'collection_02',
-    title: 'Collection III',
-    heroFile: 'shining_2024_80x120.jpeg',
+    title: 'Self-Portrait',
+    heroFile: 'dreams_2025_80x80.jpeg',
     works: [
-      { file: 'shining_2024_80x120.jpeg',                   title: 'Shining',                     year: 2024, size: '80 × 120 cm' },
       { file: 'dreams_2025_80x80.jpeg',                     title: 'Dreams',                      year: 2025, size: '80 × 80 cm' },
       { file: 'the_Id_ego_and_superego_2025_70x70.jpeg',    title: 'The Id, Ego and Superego',    year: 2025, size: '70 × 70 cm' },
       { file: 'the_touch_2025_70x70.jpeg',                  title: 'The Touch',                   year: 2025, size: '70 × 70 cm' },
+      { file: 'shining_2024_80x120.jpeg',                   title: 'Shining',                     year: 2024, size: '80 × 120 cm' },
     ],
   },
   {
     id: 'meditation',
     title: 'Meditation',
     heroFile: 'meditation01_2025_200x200.jpg',
-    link: { href: 'https://www.bddh13.com/meditation', label: 'About the Vernissage 🔥' },
+    link: { href: 'https://www.bddh13.com/meditation', label: 'About the Vernissage' },
     works: [
       { file: 'meditation01_2025_200x200.jpg', title: 'Meditation I',   year: 2025, size: '200 × 200 cm' },
       { file: 'meditation02_2025_200x200.jpg', title: 'Meditation II',  year: 2025, size: '200 × 200 cm' },

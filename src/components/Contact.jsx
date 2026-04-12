@@ -66,7 +66,7 @@ export default function Contact() {
       {/* Footer */}
       <div className="px-6 md:px-12 mt-24 pt-6 border-t border-[#222] flex justify-between items-center">
         <span className="font-sans text-[9px] tracking-[0.4em] uppercase text-[#e8e4dc]/35">
-          LÚNA SELEZMAN by BDDH13
+          LÚNASELEZMAN.ART by BDDH13
         </span>
         <span className="font-sans text-[9px] tracking-[0.4em] uppercase text-[#e8e4dc]/35">
           © 2024–2026
