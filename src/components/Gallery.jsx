@@ -234,7 +234,7 @@ export default function Gallery() {
             <img
               src={`/art/${FEATURED.file}`}
               alt={FEATURED.title}
-              className="w-full max-h-[75vh] object-cover transition-transform duration-500 hover:scale-[1.02]"
+              className="w-full max-h-[75vh] object-contain transition-transform duration-500 hover:scale-[1.02]"
             />
             <div className="gallery-overlay">
               <div>
@@ -283,7 +283,7 @@ export default function Gallery() {
                 <img
                   src={`/art/${collection.id}/${activeWork.file}`}
                   alt={activeWork.title}
-                  className="w-full max-h-[70vh] object-cover transition-transform duration-500 hover:scale-[1.02]"
+                  className="w-full max-h-[70vh] object-contain transition-transform duration-500 hover:scale-[1.02]"
                   loading="lazy"
                 />
                 <div className="gallery-overlay">
