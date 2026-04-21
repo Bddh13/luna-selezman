@@ -35,6 +35,7 @@ const COLLECTIONS = [
       { file: 'dreams_2025_80x80.jpeg',                     title: 'Dreams',                      year: 2025, size: '80 × 80 cm' },
       { file: 'the_Id_ego_and_superego_2025_70x70.jpeg',    title: 'The Id, Ego and Superego',    year: 2025, size: '70 × 70 cm' },
       { file: 'the_touch_2025_70x70.jpeg',                  title: 'The Touch',                   year: 2025, size: '70 × 70 cm' },
+      { file: 'she_60×80_2025.jpg',                          title: 'She',                         year: 2025, size: '60 × 80 cm' },
       { file: 'shining_2024_80x120.jpeg',                   title: 'Shining',                     year: 2024, size: '80 × 120 cm' },
     ],
   },
